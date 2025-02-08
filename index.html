@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXAMAN DANS...</title>
+    <style>
+        /* Styles généraux */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #ffffff; /* Fond blanc */
+            color: #ff0000; /* Rouge vif */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        #countdown {
+            font-size: 4em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="countdown">Chargement...</div>
+
+    <script>
+        // Définir l'heure cible (format: "YYYY-MM-DD HH:MM:SS")
+        let targetTime = "2025-02-10 07:30:00"; // Modifie cette heure selon ton besoin
+
+        function updateCountdown() {
+            let now = new Date();
+            let targetDate = new Date(targetTime);
+            let timeDiff = targetDate - now;
+
+            if (timeDiff <= 0) {
+                document.getElementById("countdown").innerHTML = "Temps écoulé !";
+                return;
+            }
+
+            let hours = Math.floor(timeDiff / (1000 * 60 * 60));
+            let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                hours.toString().padStart(2, '0') + "h " +
+                minutes.toString().padStart(2, '0') + "m " +
+                seconds.toString().padStart(2, '0') + "s";
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+
+</body>
+</html>
