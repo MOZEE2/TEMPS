@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EXAMAN DANS...</title>
+    <title>EXAMEN DANS...</title>
     <style>
         /* Styles généraux */
         * {
@@ -35,8 +34,8 @@
     <div id="countdown">Chargement...</div>
 
     <script>
-        // Définir l'heure cible (format: "YYYY-MM-DD HH:MM:SS")
         let targetTime = "2025-02-10 07:30:00"; // Modifie cette heure selon ton besoin
+        let displayTime = 30 * 1000; // 30 secondes en millisecondes
 
         function updateCountdown() {
             let now = new Date();
@@ -58,8 +57,15 @@
                 seconds.toString().padStart(2, '0') + "s";
         }
 
-        setInterval(updateCountdown, 1000);
+        // Mettre à jour le compte à rebours chaque seconde
+        let countdownInterval = setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        // Après 30 secondes, remplacer par un texte
+        setTimeout(() => {
+            clearInterval(countdownInterval); // Arrêter le chronomètre
+            document.getElementById("countdown").innerHTML = "🔥 SI TU N'A PAS BOSSER , C'EST L'HEURE QUI VA TE LIRE!😂 🔥";
+        }, displayTime);
     </script>
 
 </body>
